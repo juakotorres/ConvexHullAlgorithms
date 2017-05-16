@@ -1,0 +1,51 @@
+
+2. Vectores
+
+2.1 ¿Qué ocurre cuando se normaliza un vector con base en Integer y otro en base a Double?
+
+Normalizar vectores
+
+Vector(2,4,0) normalizado : (0, 1, 0)
+Vector(2.4,2.4,1.1) normalizado : (0.672662, 0.672662, 0.308304)
+
+Podemos ver que con números pequeños, la normalización en vectores con int es pésima al sacar raíz cuadrada
+de sus componentes, pero para los números double no ocurre eso ya que se tiene la precisión requerida.
+
+2.2 (Pregunta válida producto cruz y punto) Si se empezaran a usar números muy pequeños o muy grandes
+ y principalmente números primos, ¿Qué ocurre en términos de precisión?
+
+  Vector<int> grandeInt1(400000000, 500000000, 100000000);
+  Vector<int> grandeInt2(300000000, 300000000, 300000000);
+
+  Resultado: producto cruz : (1024196608, 305594368, -1329790976), punto: 413007872
+
+  Vector<int> grandeInt1(40, 50, 10);
+  Vector<int> grandeInt2(30, 30, 30);
+
+  Resultado: producto cruz : (1200, -900, -300), punto: 3000
+
+  Podemos ver dado este caso, se da overflow para el primero, por lo que tiene menor precisión que lo del double.
+  Esto se debe a que double con su estructura de punto-flotante guarda más valores en menos bits, por lo que posee
+  mayor precisión, pero mayor costo por operación al guardar más datos.
+
+3. Segmentos
+
+Para este caso se deberá probar nuevamente con Integers y Doubles,
+y evaluar los problemas de precisión para puntos muy cercanos al segmento en sí.
+¿En qué caso es más preciso? ¿Por qué?
+
+En temas de cercanía es más preciso el segmento de double, ya que puede saber si un punto muy cercano está a la derecha
+o izquierda. Para el caso de los segmentos enteros solo puede evaluar con números enteros por lo que la precisión solo existe
+hasta distancia 1.
+
+
+4. Poligonos
+
+Discuta sobre posibles problemas de precisión.
+
+Los principales problemas de precisión se pueden dar en el caso de que los puntos a buscar sean puntos colineales de una
+arista del poligono. También si el punto esta muy cercano a una arista del poligono pueden caer errores en la precisión
+con el epsilon dado.
+
+
+

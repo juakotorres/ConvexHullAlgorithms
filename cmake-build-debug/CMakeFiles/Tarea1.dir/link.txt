@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/Tarea1.dir/main.cpp.o CMakeFiles/Tarea1.dir/Algorithms/GiftWrapping.cpp.o CMakeFiles/Tarea1.dir/Algorithms/QuickHull.cpp.o CMakeFiles/Tarea1.dir/Algorithms/ConvexHullAlgorithm.cpp.o CMakeFiles/Tarea1.dir/Generators/CirclePointsGenerator.cpp.o CMakeFiles/Tarea1.dir/Generators/RandomPointsGenerator.cpp.o  -o Tarea1 
