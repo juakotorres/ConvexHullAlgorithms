@@ -37,3 +37,22 @@ Point<double> ConvexHullAlgorithm::leftMostPoint() {
 
     return result;
 }
+
+/**
+ * Look for rightmost point in list given.
+ * @return Point leftmost in the set, null if not set.
+ */
+Point<double> ConvexHullAlgorithm::rightMostPoint() {
+    double maxX = cloud->front().getX();
+    Point<double> result = cloud->front();
+
+    for (int i = 1; i < cloud->size(); i++){
+        if(maxX < (cloud->at((unsigned long) i)).getX()){
+            result = (cloud->at((unsigned long) i));
+            maxX = result.getX();
+        }
+    }
+
+    return result;
+}
+

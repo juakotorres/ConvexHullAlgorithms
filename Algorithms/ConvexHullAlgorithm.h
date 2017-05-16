@@ -15,6 +15,7 @@ public:
     virtual void executeAlgorithm(std::vector<Point<double>> points);
 protected:
     Point<double> leftMostPoint();
+    Point<double> rightMostPoint();
     std::vector<Point<double>> *cloud;
     Polygon<double> *convexHull;
 
