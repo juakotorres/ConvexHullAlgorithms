@@ -17,8 +17,8 @@ void QuickHull::executeAlgorithm(std::vector<Point<double>> points) {
     Point<double> pointA = leftMostPoint();
 
     /* Separamos el conjunto en dos conjuntos de acuerdo a la regla de estar a la derecha de la recta. */
-    std::vector<Point<double>> *rightSetAB = getRightSet(pointA, pointB, points);
-    std::vector<Point<double>> *rightSetBA = getRightSet(pointB, pointA, points);
+    std::vector<Point<double>> *rightSetAB = getRightSet(pointA, pointB, *cloud);
+    std::vector<Point<double>> *rightSetBA = getRightSet(pointB, pointA, *cloud);
 
 
     /* Cola con los puntos de la cerradura convexa. */
@@ -84,8 +84,8 @@ void QuickHull::quickHullAux(std::vector<Point<double>> *Set, Point<double> poin
     std::vector<Point<double>> *rightSetCB = getRightSet(pointC, pointB, *Set);
 
     /* Realizamos el quickhull recursivo. */
-    quickHullAux(rightSetAC, pointB, pointA, actualConvexHull);
-    quickHullAux(rightSetCB, pointA, pointB, actualConvexHull);
+    quickHullAux(rightSetAC, pointA, pointC, actualConvexHull);
+    quickHullAux(rightSetCB, pointC, pointB, actualConvexHull);
 
     /* Liberamos memoria no usada a futuro.*/
     delete(rightSetAC);

@@ -3,14 +3,44 @@
 #include "Geometry/JVector.h"
 #include "Geometry/Segmento.h"
 #include "Geometry/Polygon.h"
+#include "Generators/RandomPointsGenerator.h"
+#include "Algorithms/QuickHull.h"
+#include "Algorithms/GiftWrapping.h"
 
 int main() {
     /* Tests tarea 2 */
 
+    RandomPointsGenerator generator;
+
+    std::vector<Point<double>> *cloud = generator.generateRandomPoints(1 << 10, 100, 100);
 
 
+    GiftWrapping *algorithm1 = new GiftWrapping();
+    QuickHull *algorithm2 = new QuickHull();
+
+    for(int i = 0; i < cloud->size(); i++){
+        Point<double> a = cloud->at(i);
+        printf("Punto  (%f, %f)\n", a.getX(), a.getY());
+    }
+    algorithm2->executeAlgorithm(*cloud);
+    algorithm1->executeAlgorithm(*cloud);
+    Polygon<double> *result1 = algorithm2->getConvexHull();
+    Polygon<double> *result2 = algorithm1->getConvexHull();
+    std::vector<Point<double>> vertices1 = result1->getVertices();
+    std::vector<Point<double>> vertices2 = result2->getVertices();
 
 
+    for(int i = 0; i < vertices1.size(); i++){
+        Point<double> a = vertices1[i];
+        printf("QuickHull  (%f, %f)\n", a.getX(), a.getY());
+    }
+    for(int i = 0; i < vertices2.size(); i++){
+        Point<double> a = vertices2[i];
+        printf("GiftWrapping  (%f, %f)\n", a.getX(), a.getY());
+    }
+
+    printf("numberofVertices GiftWrapping : %f \n", result2->numberOfVertices());
+    printf("numberofVertices QuickHull : %f \n", result1->numberOfVertices());
 
     /* Tests tarea 1 *//*
     *//* Ejemplos de puntos en el plano 2D *//*

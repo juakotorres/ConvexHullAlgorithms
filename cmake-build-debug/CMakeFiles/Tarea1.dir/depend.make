@@ -29,7 +29,12 @@ CMakeFiles/Tarea1.dir/Generators/CirclePointsGenerator.cpp.o: ../Generators/Circ
 
 CMakeFiles/Tarea1.dir/Generators/RandomPointsGenerator.cpp.o: ../Generators/RandomPointsGenerator.cpp
 CMakeFiles/Tarea1.dir/Generators/RandomPointsGenerator.cpp.o: ../Generators/RandomPointsGenerator.h
+CMakeFiles/Tarea1.dir/Generators/RandomPointsGenerator.cpp.o: ../Geometry/Point.h
 
+CMakeFiles/Tarea1.dir/main.cpp.o: ../Algorithms/ConvexHullAlgorithm.h
+CMakeFiles/Tarea1.dir/main.cpp.o: ../Algorithms/GiftWrapping.h
+CMakeFiles/Tarea1.dir/main.cpp.o: ../Algorithms/QuickHull.h
+CMakeFiles/Tarea1.dir/main.cpp.o: ../Generators/RandomPointsGenerator.h
 CMakeFiles/Tarea1.dir/main.cpp.o: ../Geometry/JVector.h
 CMakeFiles/Tarea1.dir/main.cpp.o: ../Geometry/Point.h
 CMakeFiles/Tarea1.dir/main.cpp.o: ../Geometry/Polygon.h

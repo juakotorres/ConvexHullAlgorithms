@@ -14,9 +14,6 @@ Polygon<double> *ConvexHullAlgorithm::getConvexHull() {
 }
 
 void ConvexHullAlgorithm::executeAlgorithm(std::vector<Point<double>> points) {
-    if(cloud != nullptr)
-        delete(cloud);
-
     cloud = new std::vector<Point<double>>(points);
 }
 

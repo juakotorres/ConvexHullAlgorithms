@@ -6,8 +6,13 @@
 #define TAREA1_RANDOMPOINTSGENERATOR_H
 
 
-class RandomPointsGenerator {
+#include <vector>
+#include <cstdlib>
+#include "../Geometry/Point.h"
 
+class RandomPointsGenerator {
+public:
+    std::vector<Point<double>> *generateRandomPoints(double numberOfPoints, double maxX, double maxY);
 };
 
 

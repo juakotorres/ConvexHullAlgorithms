@@ -22,6 +22,10 @@ public:
     bool intersection(Point<T> point);
     T area();
     bool ccw();
+
+    T numberOfVertices();
+
+    std::vector<Point<T>> getVertices();
 };
 
 template <class T>
@@ -121,6 +125,16 @@ T Polygon<T>::area(){
 
     return result / 2;
 
+}
+
+template <class T>
+T Polygon<T>::numberOfVertices(){
+    return this->vertices.size();
+}
+
+template <class T>
+std::vector<Point<T>> Polygon<T>::getVertices(){
+    return this->vertices;
 }
 
 #endif //TAREA1_POLYGON_H

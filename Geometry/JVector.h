@@ -5,6 +5,7 @@
 #ifndef TAREA1_JVECTOR_H
 #define TAREA1_JVECTOR_H
 
+#include <cstdio>
 #include "math.h"
 
 template <class T>
@@ -106,7 +107,9 @@ T &Vector<T>::getZ() {
 
 template <class T>
 double Vector<T>::getAngle(Vector<T> vector) {
-    return acos(this->punto(vector) / (this->magnitud * vector.magnitud));
+    return atan2(this->getX()*vector.getY() - this->getY()*vector.getX(), this->punto(vector));
+    //return atan2(vector.getY() - this->getY(), vector.getX() - this->getX());
+    //return acos(this->punto(vector) / (this->magnitud * vector.magnitud));
 }
 
 

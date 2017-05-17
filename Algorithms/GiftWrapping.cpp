@@ -3,6 +3,7 @@
 //
 
 #include <algorithm>
+#include <cstdio>
 #include "GiftWrapping.h"
 
 GiftWrapping::GiftWrapping() {
@@ -15,13 +16,13 @@ void GiftWrapping::executeAlgorithm(std::vector<Point<double>> points) {
     Point<double> leftmost = leftMostPoint();
     std::vector<Point<double>> *auxConvexHull = new std::vector<Point<double>>();
 
-    Point<double> auxPoint(leftmost.getX(), leftmost.getY() + 1);
-    Vector<double> auxVector(leftmost, auxPoint);
+    Point<double> auxPoint(leftmost.getX(), leftmost.getY() - 10);
+    Vector<double> auxVector(auxPoint, leftmost);
     Point<double> selected = leftmost;
     unsigned long j = 1;
 
     /* GiftWrapping */
-    while(!(auxConvexHull->front() == auxPoint)){
+    while(auxConvexHull->empty() || !(auxConvexHull->front() == auxPoint)){
         /* buscamos el punto que tenga todos los demas puntos
          * a su izquierda, esto se hace buscando el angulo mas pequeno */
 
@@ -35,16 +36,19 @@ void GiftWrapping::executeAlgorithm(std::vector<Point<double>> points) {
         for(unsigned long i = 0; i < cloud->size(); i++){
             Point<double> posibleChange = cloud->at(i);
             Vector<double> posibleChangeVector(posibleChange, auxConvexHull->at(j - 1));
-            double posibleNewAngle = posibleChangeVector.getAngle(auxVector);
+            double posibleNewAngle = auxVector.getAngle(posibleChangeVector);
 
-            /* Cambiamos candidato si es mejor que el anterior, ccw es la busqueda. */
-            if((candidateAngle > posibleNewAngle )
-               && (posibleChange == auxConvexHull->at(0) || notInConvexHull(auxConvexHull, posibleChange))){
+            /* Cambiamos candidato si es mejor que el anterior, cw es la busqueda. */
+            if( candidateAngle < posibleNewAngle
+               && (posibleChange == auxConvexHull->front() || notInConvexHull(auxConvexHull, posibleChange))){
                 nextCandidate = posibleChange;
                 candidateAngle = posibleNewAngle;
             }
         }
 
+        Vector<double> newAuxVector(auxConvexHull->at(j - 1), nextCandidate);
+        auxVector = newAuxVector;
+        auxPoint = nextCandidate;
         selected = nextCandidate;
         j++;
     }
@@ -66,5 +70,5 @@ Point<double> GiftWrapping::lookForPosibleCandidate(std::vector<Point<double>> *
 }
 
 bool GiftWrapping::notInConvexHull(std::vector<Point<double>> *convexHull, Point<double> point) {
-    return std::find(convexHull->begin(), convexHull->end(), point) != convexHull->end();
+    return std::find(convexHull->begin(), convexHull->end(), point) == convexHull->end();
 }

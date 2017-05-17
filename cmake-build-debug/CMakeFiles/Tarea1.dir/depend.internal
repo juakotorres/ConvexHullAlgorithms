@@ -30,7 +30,12 @@ CMakeFiles/Tarea1.dir/Generators/CirclePointsGenerator.cpp.o
 CMakeFiles/Tarea1.dir/Generators/RandomPointsGenerator.cpp.o
  /home/juaki/CLionProjects/Tarea1/Generators/RandomPointsGenerator.cpp
  /home/juaki/CLionProjects/Tarea1/Generators/RandomPointsGenerator.h
+ /home/juaki/CLionProjects/Tarea1/Geometry/Point.h
 CMakeFiles/Tarea1.dir/main.cpp.o
+ /home/juaki/CLionProjects/Tarea1/Algorithms/ConvexHullAlgorithm.h
+ /home/juaki/CLionProjects/Tarea1/Algorithms/GiftWrapping.h
+ /home/juaki/CLionProjects/Tarea1/Algorithms/QuickHull.h
+ /home/juaki/CLionProjects/Tarea1/Generators/RandomPointsGenerator.h
  /home/juaki/CLionProjects/Tarea1/Geometry/JVector.h
  /home/juaki/CLionProjects/Tarea1/Geometry/Point.h
  /home/juaki/CLionProjects/Tarea1/Geometry/Polygon.h

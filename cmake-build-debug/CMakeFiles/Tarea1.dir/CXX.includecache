@@ -17,6 +17,8 @@ ConvexHullAlgorithm.h
 /home/juaki/CLionProjects/Tarea1/Algorithms/GiftWrapping.cpp
 algorithm
 -
+cstdio
+-
 GiftWrapping.h
 /home/juaki/CLionProjects/Tarea1/Algorithms/GiftWrapping.h
 
@@ -41,6 +43,8 @@ QuickHull.h
 /home/juaki/CLionProjects/Tarea1/Algorithms/QuickHull.h
 vector
 -
+queue
+-
 ../Geometry/Point.h
 /home/juaki/CLionProjects/Tarea1/Geometry/Point.h
 ../Geometry/Polygon.h
@@ -55,12 +59,24 @@ CirclePointsGenerator.h
 /home/juaki/CLionProjects/Tarea1/Generators/CirclePointsGenerator.h
 
 /home/juaki/CLionProjects/Tarea1/Generators/RandomPointsGenerator.cpp
+stdlib.h
+-
+time.h
+-
 RandomPointsGenerator.h
 /home/juaki/CLionProjects/Tarea1/Generators/RandomPointsGenerator.h
 
 /home/juaki/CLionProjects/Tarea1/Generators/RandomPointsGenerator.h
+vector
+-
+cstdlib
+-
+../Geometry/Point.h
+/home/juaki/CLionProjects/Tarea1/Geometry/Point.h
 
 /home/juaki/CLionProjects/Tarea1/Geometry/JVector.h
+cstdio
+-
 math.h
 /home/juaki/CLionProjects/Tarea1/Geometry/math.h
 
@@ -93,4 +109,10 @@ Geometry/Segmento.h
 /home/juaki/CLionProjects/Tarea1/Geometry/Segmento.h
 Geometry/Polygon.h
 /home/juaki/CLionProjects/Tarea1/Geometry/Polygon.h
+Generators/RandomPointsGenerator.h
+/home/juaki/CLionProjects/Tarea1/Generators/RandomPointsGenerator.h
+Algorithms/QuickHull.h
+/home/juaki/CLionProjects/Tarea1/Algorithms/QuickHull.h
+Algorithms/GiftWrapping.h
+/home/juaki/CLionProjects/Tarea1/Algorithms/GiftWrapping.h
 
