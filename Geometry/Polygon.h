@@ -6,6 +6,7 @@
 #define TAREA1_POLYGON_H
 
 #include <vector>
+#include <algorithm>
 #include "Point.h"
 #include "Segmento.h"
 
@@ -22,9 +23,8 @@ public:
     bool intersection(Point<T> point);
     T area();
     bool ccw();
-
+    bool polygonEqual(Polygon polygon);
     T numberOfVertices();
-
     std::vector<Point<T>> getVertices();
 };
 
@@ -137,4 +137,18 @@ std::vector<Point<T>> Polygon<T>::getVertices(){
     return this->vertices;
 }
 
+template <class T>
+bool Polygon<T>::polygonEqual(Polygon polygon) {
+    std::vector<Point<T>> vertices2 = polygon.getVertices();
+
+    for(int i = 0; i < vertices2.size(); i++){
+        Point<T> point = vertices2.at(i);
+
+        if(std::find(vertices.begin(), vertices.end(), point) == vertices.end()) {
+            return false;
+        }
+    }
+
+    return true;
+}
 #endif //TAREA1_POLYGON_H

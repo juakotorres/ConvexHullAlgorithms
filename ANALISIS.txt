@@ -1,0 +1,36 @@
+Para esta tarea se implementaron los algoritmos GiftWrapping y QuickHull.
+Se tomó como supuesto que la entrada no eran todos puntos en una línea. (todos colineales)
+
+Los puntos que se usaron para analizar los algoritmos son puntos aleatorios dentro de un rango dado.
+Los puntos son flotantes.
+
+Tabla de resultados (1024 puntos)
+Tiempo GiftWrapping (ms) | Tiempo QuickHull (ms) | tamaño de la cerradura convexa
+3.389 | 1.123 | 15
+5.069 | 3.227 | 21
+2.940 | 0.869 | 20
+4.371 | 1.334 | 19
+2.935 | 1.238 | 15
+2.500 | 0.825 | 16
+2.239 | 0.972 | 15
+2.372 | 0.829 | 16
+4.591 | 1.302 | 19
+2.678 | 0.795 | 18
+4.091 | 1.238 | 18
+4.328 | 1.132 | 19
+4.282 | 1.198 | 18
+3.724 | 1.247 | 16
+3.025 | 0.918 | 20
+
+
+Promedio tiempo GiftWrapping (ms): 3.502
+Promedio tiempo QuickHull (ms): 1.216
+Promedio tamaño de la cerradura convexa: 17.6
+
+
+Teniendo en cuenta de que giftwrapping es de orden n*h, con n número de puntos y h tamaño de la cerradura convexa.
+También teniendo en cuenta que quickhull es de orden nlogn y log(2^10) = 10.
+
+Podemos ver que los resultados son coherentes a la teoría dado que giftwrapping toma más tiempo que quickhull, esto se
+debe a que el tamaño de la cerradura convexa es mayor al logaritmo del tamaño del problema.
+

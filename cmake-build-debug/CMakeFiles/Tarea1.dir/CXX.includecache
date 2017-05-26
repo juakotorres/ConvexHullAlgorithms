@@ -85,6 +85,8 @@ math.h
 /home/juaki/CLionProjects/Tarea1/Geometry/Polygon.h
 vector
 -
+algorithm
+-
 Point.h
 /home/juaki/CLionProjects/Tarea1/Geometry/Point.h
 Segmento.h

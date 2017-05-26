@@ -7,6 +7,26 @@
 #include "Algorithms/QuickHull.h"
 #include "Algorithms/GiftWrapping.h"
 
+
+
+struct timespec diff(struct timespec start, struct timespec end)
+{
+    struct timespec temp;
+
+    if ((end.tv_nsec-start.tv_nsec)<0)
+    {
+        temp.tv_sec = end.tv_sec-start.tv_sec-1;
+        temp.tv_nsec = 1000000000+end.tv_nsec-start.tv_nsec;
+    }
+    else
+    {
+        temp.tv_sec = end.tv_sec-start.tv_sec;
+        temp.tv_nsec = end.tv_nsec-start.tv_nsec;
+    }
+    return temp;
+}
+
+
 int main() {
     /* Tests tarea 2 */
 
@@ -18,29 +38,50 @@ int main() {
     GiftWrapping *algorithm1 = new GiftWrapping();
     QuickHull *algorithm2 = new QuickHull();
 
-    for(int i = 0; i < cloud->size(); i++){
+    /* Debug para ver la nube de puntos. */
+    /*for(int i = 0; i < cloud->size(); i++){
         Point<double> a = cloud->at(i);
         printf("Punto  (%f, %f)\n", a.getX(), a.getY());
-    }
-    algorithm2->executeAlgorithm(*cloud);
-    algorithm1->executeAlgorithm(*cloud);
+    }*/
+    float tiempo_total_1 = 0;
+    float tiempo_total_2 = 0;
+    struct timespec t1, t2;;
+
+    time_t inicio;
+    time_t t_iteracion;
+    clock_gettime(CLOCK_REALTIME, &t1); //empezar a medir tiempo
+    algorithm2->executeAlgorithm(*cloud); // ejecutamos QuickHull
+    clock_gettime(CLOCK_REALTIME, &t2);//terminar de medir tiempo
+
+    tiempo_total_1 += diff(t1,t2).tv_sec * 1000000000 + diff(t1,t2).tv_nsec;
+
+
+    clock_gettime(CLOCK_REALTIME, &t1); //empezar a medir tiempo
+    algorithm1->executeAlgorithm(*cloud); // ejecutamos GiftWrapping
+    clock_gettime(CLOCK_REALTIME, &t2);//terminar de medir tiempo
+
+    tiempo_total_2 += diff(t1,t2).tv_sec * 1000000000 + diff(t1,t2).tv_nsec;
+
     Polygon<double> *result1 = algorithm2->getConvexHull();
     Polygon<double> *result2 = algorithm1->getConvexHull();
     std::vector<Point<double>> vertices1 = result1->getVertices();
     std::vector<Point<double>> vertices2 = result2->getVertices();
 
-
-    for(int i = 0; i < vertices1.size(); i++){
+    /* Debug para ver los puntos resultantes. */
+    /*for(int i = 0; i < vertices1.size(); i++){
         Point<double> a = vertices1[i];
         printf("QuickHull  (%f, %f)\n", a.getX(), a.getY());
     }
     for(int i = 0; i < vertices2.size(); i++){
         Point<double> a = vertices2[i];
         printf("GiftWrapping  (%f, %f)\n", a.getX(), a.getY());
-    }
+    }*/
 
+    printf("Las dos cerraduras convexas son iguales? : %d\n", result1->polygonEqual(*result2));
     printf("numberofVertices GiftWrapping : %f \n", result2->numberOfVertices());
     printf("numberofVertices QuickHull : %f \n", result1->numberOfVertices());
+    printf("Tiempo ejecucion GiftWrapping: %.3f\n", tiempo_total_2 / 1000000);
+    printf("Tiempo ejecucion QuickHull: %.3f\n", tiempo_total_1 / 1000000);
 
     /* Tests tarea 1 *//*
     *//* Ejemplos de puntos en el plano 2D *//*
